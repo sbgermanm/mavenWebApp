@@ -20,6 +20,6 @@ public class IndexController  {
     @RequestMapping("/sebas")
     public String index()
     {
-        return "WEB-INF/jsp/index.jsp"; 
+        return "index"; 
     }
 }
