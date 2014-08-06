@@ -2,13 +2,39 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+  xmlns:tx="http://www.springframework.org/schema/tx"     
 
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
           http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
-">
+          http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/context/spring-jdbc-4.0.xsd
+          http://www.springframework.org/schema/tx http://www.springframework.org/schema/context/spring-tx-4.0.xsd
+" >
+</beans>
 
     <context:component-scan base-package="com.sebas.jbasample3.maverwebapp">
         <context:exclude-filter type="aannotation" expression="org.springframework.stereotype.Controller"/>
     </context:component-scan>
+    
+    <jdbc:embedded-database type="HSQL" id="miBaseDePatos"/>
+    
+    <bean class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean" id="miEntityManager">
+        <property name="packagesToScan" value="com.sebas.jbasample3.maverwebapp.entity"/>
+        <property name="dataSource" ref="miBaseDePatos"/>
+        <property name="persistenceProvider">
+            <bean class="org.hibernate.jpa.HibernatePersistenceProvider"/>
+        </property>
+        <property name="jpaProperties">
+            <props>
+                <prop key="hibernate.show_sql">true</prop>
+                <prop key="hibernate.hbm2ddl.auto">create</prop>
+            </props>
+        </property>
+    </bean>  
+    
+    <tx:annotation-driven transaction-manager="transactionManager"  />
+    <bean class="org.springframework.orm.jpa.JpaTransactionManager" id="transactionManager">
+        <property name="dataSource" ref="miBaseDePatos" />
+    </bean>
     
 </beans>
