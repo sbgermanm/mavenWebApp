@@ -57,6 +57,17 @@ public class DataBaseInitializer {
         Usuario usuario = new Usuario("Yo", misRoles);
         usuarioRepository.save(usuario);
         
+        List<Role> pelotudo1Roles = new ArrayList<Role>();
+        pelotudo1Roles.add(role1);
+        Usuario pelotudo1 = new Usuario("Pelotudo1", pelotudo1Roles);
+        usuarioRepository.save(pelotudo1);
+        
+        List<Role> pelotudo2Roles = new ArrayList<Role>();
+        pelotudo2Roles.add(role1);
+        Usuario pelotudo2 = new Usuario("Pelotudo2", pelotudo2Roles);
+        usuarioRepository.save(pelotudo2);
+        
+        
         Blog blog = new Blog("JavavidBlog", "http://feeds.feedburner.com/javavids?format=xml", usuario);
         blogRepository.save(blog);
         

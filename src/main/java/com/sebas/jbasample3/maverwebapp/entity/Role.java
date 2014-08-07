@@ -29,6 +29,9 @@ public class Role implements Serializable {
     @ManyToMany(mappedBy = "roles")
     private List<Usuario> usuarios;
 
+    public Role() {
+    }
+
     public Role(String name) {
         this.name = name;
     }

@@ -3,11 +3,15 @@
        "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
        "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
 <tiles-definitions>
-	<definition name="common" template="/WEB-INF/layout/classic.jsp">
-		<put-attribute name="footer" value="/WEB-INF/layout/footer.jsp" />
-	</definition>
-	<definition name="index" extends="common">
-		<put-attribute name="title" value="Java Blog Aggregator" />
-		<put-attribute name="body" value="/WEB-INF/jsp/index.jsp" />
-	</definition>
+    <definition name="common" template="/WEB-INF/layout/classic.jsp">
+        <put-attribute name="footer" value="/WEB-INF/layout/footer.jsp" />
+    </definition>
+    <definition name="index" extends="common">
+        <put-attribute name="title" value="Java Blog Aggregator" />
+        <put-attribute name="body" value="/WEB-INF/jsp/index.jsp" />
+    </definition>
+    <definition name="listadoUsuarioTilesDefinition" extends="common">
+        <put-attribute name="title" value="Listado de Usuarios" />
+        <put-attribute name="body" value="/WEB-INF/jsp/listadoUsuarios.jsp" />
+    </definition>
 </tiles-definitions>

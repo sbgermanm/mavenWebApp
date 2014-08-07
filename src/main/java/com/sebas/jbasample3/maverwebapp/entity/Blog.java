@@ -36,6 +36,9 @@ public class Blog implements Serializable {
     @OneToMany(mappedBy="blog")
     private List<Item> items;
 
+    public Blog() {
+    }
+
     public Blog(String name, String url, Usuario usuario) {
         this.name = name;
         this.url = url;
