@@ -37,6 +37,12 @@ public class Usuario implements Serializable {
     @OneToMany(mappedBy = "usuario")
     private List<Blog> blogs;
 
+    public Usuario(String name, List<Role> roles) {
+        this.name = name;
+        this.roles = roles;
+    }
+
+    
     public Integer getId() {
         return id;
     }
@@ -82,6 +88,7 @@ public class Usuario implements Serializable {
     }
 
 
+
     @Override
     public int hashCode() {
         int hash = 0;
@@ -104,7 +111,7 @@ public class Usuario implements Serializable {
 
     @Override
     public String toString() {
-        return "com.sebas.jbasample3.maverwebapp.entity.Usuario[ id=" + id + " ]";
+        return "com.sebas.jbasample.controller.entity.Usuario[ id=" + id + " ]";
     }
     
 }

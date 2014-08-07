@@ -36,6 +36,16 @@ public class Item implements Serializable {
     @JoinColumn(name = "blog_id")
     private Blog blog;
 
+    public Item(String title, Date publishDate, Blog blog, String link) {
+        this.title = title;
+        this.publishDate = publishDate;
+        this.blog = blog;
+        this.link = link;
+    }
+
+    
+    
+    
     public String getDescripcion() {
         return descripcion;
     }
