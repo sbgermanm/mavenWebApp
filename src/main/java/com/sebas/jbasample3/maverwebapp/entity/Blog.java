@@ -12,8 +12,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 /**
@@ -21,25 +21,20 @@ import javax.persistence.OneToMany;
  * @author Sebasy
  */
 @Entity
-public class Usuario implements Serializable {
+public class Blog implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
     private String name;
-    private String password;
-    private String email;
+    private String url;
     
-    @ManyToMany
-    @JoinTable
-    private List<Role> roles;
+    @ManyToOne
+    @JoinColumn(name = "usuario_id")
+    private Usuario usuario;
     
-    @OneToMany(mappedBy = "usuario")
-    private List<Blog> blogs;
-
-    public Integer getId() {
-        return id;
-    }
+    @OneToMany(mappedBy="blog")
+    private List<Item> items;
 
     public String getName() {
         return name;
@@ -49,38 +44,38 @@ public class Usuario implements Serializable {
         this.name = name;
     }
 
-    public String getPassword() {
-        return password;
+    public String getUrl() {
+        return url;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setUrl(String url) {
+        this.url = url;
     }
 
-    public String getEmail() {
-        return email;
+    public Usuario getUsuario() {
+        return usuario;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 
-    public List<Role> getRoles() {
-        return roles;
+    public List<Item> getItems() {
+        return items;
     }
 
-    public void setRoles(List<Role> roles) {
-        this.roles = roles;
+    public void setItems(List<Item> items) {
+        this.items = items;
+    }
+    
+    
+    public Integer getId() {
+        return id;
     }
 
-    public List<Blog> getBlogs() {
-        return blogs;
+    public void setId(Integer id) {
+        this.id = id;
     }
-
-    public void setBlogs(List<Blog> blogs) {
-        this.blogs = blogs;
-    }
-
 
     @Override
     public int hashCode() {
@@ -92,10 +87,10 @@ public class Usuario implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Usuario)) {
+        if (!(object instanceof Blog)) {
             return false;
         }
-        Usuario other = (Usuario) object;
+        Blog other = (Blog) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -104,7 +99,7 @@ public class Usuario implements Serializable {
 
     @Override
     public String toString() {
-        return "com.sebas.jbasample3.maverwebapp.entity.Usuario[ id=" + id + " ]";
+        return "com.sebas.jbasample3.maverwebapp.entity.Blog[ id=" + id + " ]";
     }
     
 }
