@@ -25,4 +25,8 @@ public class UserService {
     public List<Usuario> findAll(){
         return usuarioRepository.findAll();
     }
+
+   public Usuario findOne(int id) {
+        return usuarioRepository.findOne(id);
+    }
 }

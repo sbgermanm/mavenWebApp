@@ -10,12 +10,15 @@
         <put-attribute name="title" value="Java Blog Aggregator" />
         <put-attribute name="body" value="/WEB-INF/jsp/index.jsp" />
         <put-attribute name="current" value="index" />
-
     </definition>
     <definition name="listadoUsuarioTilesDefinition" extends="common">
         <put-attribute name="title" value="Listado de Usuarios" />
         <put-attribute name="body" value="/WEB-INF/jsp/listadoUsuarios.jsp" />
         <put-attribute name="current" value="listadoUsuarios" />
-
+    </definition>
+    <definition name="detalleUsuarioTilesDefinition" extends="common">
+        <put-attribute name="title" value="Detalle usuario" />
+        <put-attribute name="body" value="/WEB-INF/jsp/detalleUsuario.jsp" />
+        <put-attribute name="current" value="listadoUsuarios" />
     </definition>
 </tiles-definitions>

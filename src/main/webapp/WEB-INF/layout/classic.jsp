@@ -6,15 +6,15 @@
     <head>
 
         <!-- Latest compiled and minified CSS -->
-        <link rel="stylesheet" href="redist/bootstrap-3.2.0-dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/redist/bootstrap-3.2.0-dist/css/bootstrap.min.css">
 
         <!-- Optional theme -->
-        <link rel="stylesheet" href="redist/bootstrap-3.2.0-dist/css/bootstrap-theme.min.css">
+        <link rel="stylesheet" href="/redist/bootstrap-3.2.0-dist/css/bootstrap-theme.min.css">
 
-        <script src="redist/jquery/2.1.1/jquery-2.1.1.js"></script>
+        <script src="/redist/jquery/2.1.1/jquery-2.1.1.js"></script>
 
         <!-- Latest compiled and minified JavaScript -->
-        <script src="redist/bootstrap-3.2.0-dist/js/bootstrap.min.js"></script>
+        <script src="/redist/bootstrap-3.2.0-dist/js/bootstrap.min.js"></script>
 
         <%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 

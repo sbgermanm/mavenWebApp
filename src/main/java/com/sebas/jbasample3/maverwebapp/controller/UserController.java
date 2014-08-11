@@ -11,6 +11,7 @@ import com.sebas.jbasample3.maverwebapp.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
@@ -27,5 +28,11 @@ public class UserController {
     public String getAllUsers(Model modelo){
         modelo.addAttribute("listaDeUsuarios", userService.findAll());
         return "listadoUsuarioTilesDefinition";
+    }
+    
+    @RequestMapping("/users/{id}")
+    public String userDetail(Model modelo, @PathVariable int id){
+        modelo.addAttribute("usuario", userService.findOne(id));
+        return "detalleUsuarioTilesDefinition";
     }
 }
