@@ -36,6 +36,9 @@
         </property>
     </bean>  
     
+    
+
+    
     <tx:annotation-driven transaction-manager="transactionManager"  />
     <bean class="org.springframework.orm.jpa.JpaTransactionManager" id="transactionManager">
         <property name="dataSource" ref="miBaseDePatos" />
@@ -43,6 +46,6 @@
     
     <jpa:repositories base-package="com.sebas.jbasample3.maverwebapp.repository" entity-manager-factory-ref="entityManagerFactory" transaction-manager-ref="transactionManager"/>
     
-    
+    <import resource="security.xml" />
     
 </beans>
