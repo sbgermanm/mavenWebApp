@@ -22,7 +22,7 @@
    
     
     
-    <bean class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean" id="miEntityManager">
+    <bean class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean" id="entityManagerFactory">
         <property name="packagesToScan" value="com.sebas.jbasample3.maverwebapp.entity"/>
         <property name="dataSource" ref="miBaseDePatos"/>
         <property name="persistenceProvider">
@@ -41,7 +41,7 @@
         <property name="dataSource" ref="miBaseDePatos" />
     </bean>
     
-    <jpa:repositories base-package="com.sebas.jbasample3.maverwebapp.repository" entity-manager-factory-ref="miEntityManager" transaction-manager-ref="transactionManager"/>
+    <jpa:repositories base-package="com.sebas.jbasample3.maverwebapp.repository" entity-manager-factory-ref="entityManagerFactory" transaction-manager-ref="transactionManager"/>
     
     
     
