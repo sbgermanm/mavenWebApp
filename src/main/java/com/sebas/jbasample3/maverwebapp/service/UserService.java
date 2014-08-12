@@ -24,6 +24,7 @@ import org.springframework.stereotype.Service;
  * @author Sebasy
  */
 @Service
+@Transactional
 public class UserService {
     
     @Autowired
@@ -53,5 +54,9 @@ public class UserService {
         }
         usuario.setBlogs(blogs);
         return usuario;
+    }
+
+    public void save(Usuario usuario) {
+        usuarioRepository.save(usuario);
     }
 }

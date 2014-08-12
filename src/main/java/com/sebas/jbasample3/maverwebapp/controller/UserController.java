@@ -12,8 +12,10 @@ import com.sebas.jbasample3.maverwebapp.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 /**
  *
@@ -24,7 +26,11 @@ public class UserController {
     
     @Autowired
     private UserService userService;
-    
+   
+    @ModelAttribute("bindUserObject")
+    public Usuario constructUsuario(){
+        return new Usuario();
+    }
      
     @RequestMapping("/users")
     public String getAllUsers(Model modelo){
@@ -37,4 +43,16 @@ public class UserController {
         modelo.addAttribute("usuario", userService.findOneWithBlogsAndItem(id));
         return "detalleUsuarioTilesDefinition";
     }
+
+    @RequestMapping("/register")
+    public String showRegister(){
+        return "registroUsuarioTilesDefinition";
+    }
+
+    @RequestMapping(value = "/register", method = RequestMethod.POST)
+    public String doRegister(@ModelAttribute("bindUserObject") Usuario usuario){
+        userService.save(usuario);
+        return "registroUsuarioTilesDefinition";
+    }
+
 }
