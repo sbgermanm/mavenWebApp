@@ -47,6 +47,7 @@
                             <li class="${current=='index' ? 'active' : ''}"><a href='<spring:url value="/" />'>Home</a></li>
                             <li class="${current=='listadoUsuarios' ? 'active' : ''}"><a href='<spring:url value="/users.html" />'>Usuarios</a></li>
                             <li class="${current=='register' ? 'active' : ''}"><a href='<spring:url value="/register.html" />'>Registro</a></li>
+                            <li class="${current=='login' ? 'active' : ''}"><a href='<spring:url value="/login.html" />'>Login</a></li>
                         </ul>
                     </div><!--/.nav-collapse -->
                 </div><!--/.container-fluid -->
