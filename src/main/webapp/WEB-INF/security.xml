@@ -13,7 +13,7 @@
         <intercept-url pattern="/users**" access="hasRole('ROLE_ADMIN')" />
         <intercept-url pattern="/users/**" access="hasRole('ROLE_ADMIN')" />
         <form-login login-page="/login.html" />
-        <logout />
+        <logout logout-url="/logout" />
     </http>
 
     
