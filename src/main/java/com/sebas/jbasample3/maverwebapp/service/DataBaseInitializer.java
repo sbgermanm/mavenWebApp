@@ -19,6 +19,7 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 /**
@@ -57,7 +58,8 @@ public class DataBaseInitializer {
         misRoles.add(role2);
         misRoles.add(role3);
         Usuario usuario = new Usuario("Yo", misRoles);
-        usuario.setPassword("miclave");
+        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+        usuario.setPassword(encoder.encode("miclave"));
         usuarioRepository.save(usuario);
 
         List<Role> pelotudo1Roles = new ArrayList<Role>();

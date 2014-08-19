@@ -29,6 +29,8 @@
 
     <authentication-manager>
         <authentication-provider>
+            <password-encoder hash="bcrypt" />
+
             <jdbc-user-service data-source-ref="miBaseDePatos" 
                                authorities-by-username-query="select Usuario.name, Role.name from Usuario
                                                               join Usuario_Role on Usuario.id = Usuario_Role.usuarios_id
