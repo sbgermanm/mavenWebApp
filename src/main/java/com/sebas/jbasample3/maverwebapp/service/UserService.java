@@ -8,15 +8,19 @@ package com.sebas.jbasample3.maverwebapp.service;
 
 import com.sebas.jbasample3.maverwebapp.entity.Blog;
 import com.sebas.jbasample3.maverwebapp.entity.Item;
+import com.sebas.jbasample3.maverwebapp.entity.Role;
 import com.sebas.jbasample3.maverwebapp.entity.Usuario;
 import com.sebas.jbasample3.maverwebapp.repository.BlogRepository;
 import com.sebas.jbasample3.maverwebapp.repository.ItemRepository;
+import com.sebas.jbasample3.maverwebapp.repository.RoleRepository;
 import com.sebas.jbasample3.maverwebapp.repository.UsuarioRepository;
+import java.util.ArrayList;
 import java.util.List;
 import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 /**
@@ -29,6 +33,9 @@ public class UserService {
     
     @Autowired
     private UsuarioRepository usuarioRepository;
+
+    @Autowired
+    private RoleRepository roleRepository;
     
     @Autowired
     private BlogRepository blogRepository;
@@ -57,6 +64,16 @@ public class UserService {
     }
 
     public void save(Usuario usuario) {
+        usuario.setEnabled(true);
+        
+        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+        usuario.setPassword(encoder.encode(usuario.getPassword()));
+        
+        Role role = roleRepository.findByName("PELOTUDO");
+        List<Role> roles = new ArrayList<Role>();
+        roles.add(role);
+        usuario.setRoles(roles);
+        
         usuarioRepository.save(usuario);
     }
 }

@@ -29,6 +29,7 @@ public class Usuario implements Serializable {
     private String name;
     private String password;
     private String email;
+    private boolean enabled;
     
     @ManyToMany
     @JoinTable
@@ -45,6 +46,16 @@ public class Usuario implements Serializable {
         this.roles = roles;
     }
 
+    public boolean isEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
+    }
+
+    
+    
     
     public Integer getId() {
         return id;

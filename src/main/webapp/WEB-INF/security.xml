@@ -36,7 +36,7 @@
                                                               join Usuario_Role on Usuario.id = Usuario_Role.usuarios_id
                                                               join Role on Usuario_Role.roles_id = Role.id
                                                               where Usuario.name = ?" 
-                               users-by-username-query="Select name, password, 1 from Usuario where name = ?" />
+                               users-by-username-query="Select name, password, enabled from Usuario where name = ?" />
         </authentication-provider>
     </authentication-manager>
 </beans:beans>
