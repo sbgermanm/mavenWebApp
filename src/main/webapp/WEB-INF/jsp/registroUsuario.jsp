@@ -4,6 +4,13 @@
 <%@include file="../layout/taglibs.jsp" %>
 
 <form:form commandName="bindUserObject" cssClass="form-horizontal registrationForm" >
+    
+    <c:if test="${param.success eq true}">
+        <div class="alert alert-success" >Usuario registrado correctamente</div>
+    </c:if>
+          
+    
+    
     <div class="form-group">
         <label for="nombre" class="col-sm-2 control-label">Nombre:</label>
         <div class="col-sm-10">
