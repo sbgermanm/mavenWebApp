@@ -9,6 +9,7 @@ package com.sebas.jbasample3.maverwebapp.controller;
 
 import com.sebas.jbasample3.maverwebapp.entity.Usuario;
 import com.sebas.jbasample3.maverwebapp.service.UserService;
+import java.security.Principal;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -53,6 +54,13 @@ public class UserController {
     public String doRegister(@ModelAttribute("bindUserObject") Usuario usuario){
         userService.save(usuario);
         return "redirect:/register.html?success=true";
+    }
+
+    @RequestMapping("/account")
+    public String perfil(Model modelo, Principal principal){
+        String name = principal.getName();
+        modelo.addAttribute("usuario", userService.findOneWithBlogsAndItem(name));
+        return "perfilUsuarioTilesDefinition";
     }
 
 }

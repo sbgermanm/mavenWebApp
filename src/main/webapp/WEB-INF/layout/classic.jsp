@@ -54,6 +54,7 @@
                             <li class="${current=='login' ? 'active' : ''}"><a href='<spring:url value="/login.html" />'>Login</a></li>
                             </security:authorize>
                             <security:authorize access="isAuthenticated()">
+                            <li class="${current=='miCuenta' ? 'active' : ''}"><a href='<spring:url value="/account.html" />'>Perfil</a></li>
                             <li><a href='<spring:url value="/logout" />'>Logout</a></li>
                             </security:authorize>
                         </ul>
