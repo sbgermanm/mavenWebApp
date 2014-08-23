@@ -24,7 +24,7 @@
         <servlet-name>dispatcher</servlet-name>
         <url-pattern>*.htm</url-pattern>
         <url-pattern>*.html</url-pattern>
-        <url-pattern>*.jsom</url-pattern>
+        <url-pattern>*.json</url-pattern>
         <url-pattern>*.xml</url-pattern>
     </servlet-mapping>
 
