@@ -4,24 +4,47 @@
 <%@include file="../layout/taglibs.jsp" %>
 
 <h1>${usuario.name}</h1>
+
+<!--boton y formulario añadir blog-->
 <%@include file="detalleUsuario-addBlog.jsp" %>
-<c:forEach items="${usuario.blogs}" var="blog">
-    <h2>${blog.name}</h2>
-    <p>${blog.url}</p>
-    <table class="table table-bordered table-hover table-striped">
-        <thead>
-            <tr>
-                <th>Title</th>
-                <th>Link</th>
-            </tr>
-        </thead>
-        <tbody>
-            <c:forEach items="${blog.items}" var="articulo">
-                <tr>
-                    <td>${articulo.title}</td>
-                    <td>${articulo.link}</td>
-                </tr>
-            </c:forEach>
-        </tbody>
-    </table>
-</c:forEach>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('.nav-tabs a:first').tab('show');
+    } );
+</script>
+    
+
+<br /><br />
+<!-- Nav tabs -->
+<ul class="nav nav-tabs" role="tablist">
+    <c:forEach items="${usuario.blogs}" var="blog">
+        <li><a href="#blog_${blog.id}" role="tab" data-toggle="tab">${blog.name}</a></li>
+        </c:forEach>
+</ul>
+
+<!-- Tab panes -->
+<div class="tab-content">
+    <c:forEach items="${usuario.blogs}" var="blog">
+        <div class="tab-pane" id="blog_${blog.id}">
+            <p>${blog.url}</p>
+            <table class="table table-bordered table-hover table-striped">
+                <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Link</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <c:forEach items="${blog.items}" var="articulo">
+                        <tr>
+                            <td>${articulo.title}</td>
+                            <td>${articulo.link}</td>
+                        </tr>
+                    </c:forEach>
+                </tbody>
+            </table>
+
+        </div>    
+    </c:forEach>
+</div>
