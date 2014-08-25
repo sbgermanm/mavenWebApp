@@ -11,6 +11,13 @@
 <script type="text/javascript">
     $(document).ready(function() {
         $('.nav-tabs a:first').tab('show');
+        $(".lanzarConfirmationDLG").click(function (e){
+            e.preventDefault();
+            $("#confirmationDLG .confirmationDLGOK").attr("href", $(this).attr("href"));
+            $("#confirmationDLG #myModalLabel").html("Eliminar Blog");
+            $("#confirmationDLG .modal-body").html("¿Desea eliminar Blog?");
+            $("#confirmationDLG").modal();
+        });
     });
 </script>
 
@@ -30,7 +37,8 @@
         <div class="tab-pane" id="blog_${blog.id}">
             <h1>${blog.name}</h1>
 
-            <a href="<spring:url value="/blog/remove/${blog.id}.html" />" class="btn btn-danger">Borrar blog</a>
+            <a href="<spring:url value="/blog/remove/${blog.id}.html" />" class="btn btn-danger lanzarConfirmationDLG">Borrar blog</a>
+            <br/><br/>
             <p>${blog.url}</p>
             <table class="table table-bordered table-hover table-striped">
                 <thead>
@@ -52,3 +60,5 @@
         </div>    
     </c:forEach>
 </div>
+
+<%@include file="confirmationDLG.jsp" %>
