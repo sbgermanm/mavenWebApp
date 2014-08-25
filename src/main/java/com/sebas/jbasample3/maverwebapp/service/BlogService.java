@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package com.sebas.jbasample3.maverwebapp.service;
 
 import com.sebas.jbasample3.maverwebapp.entity.Blog;
@@ -24,14 +23,18 @@ public class BlogService {
 
     @Autowired
     UsuarioRepository usuarioRepository;
-    
+
     @Autowired
     BlogRepository blogRepository;
-    
+
     public void save(Blog blog, String name) {
         Usuario usuario = usuarioRepository.findByName(name);
         blog.setUsuario(usuario);
         blogRepository.save(blog);
     }
-    
+
+    public void delete(int id) {
+        blogRepository.delete(id);
+    }
+
 }

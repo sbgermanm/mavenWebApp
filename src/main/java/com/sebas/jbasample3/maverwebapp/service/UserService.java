@@ -15,6 +15,7 @@ import com.sebas.jbasample3.maverwebapp.repository.RoleRepository;
 import com.sebas.jbasample3.maverwebapp.repository.UsuarioRepository;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.prefs.Preferences;
 import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
@@ -84,5 +85,9 @@ public class UserService {
     public Usuario findOneWithBlogsAndItem(String name) {
         Usuario usuario = usuarioRepository.findByName(name);
         return findOneWithBlogsAndItem(usuario);
+    }
+
+    public void delete(int id) {
+        usuarioRepository.delete(id);
     }
 }

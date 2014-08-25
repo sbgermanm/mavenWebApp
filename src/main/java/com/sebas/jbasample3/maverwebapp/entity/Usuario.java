@@ -8,6 +8,7 @@ package com.sebas.jbasample3.maverwebapp.entity;
 
 import java.io.Serializable;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -35,7 +36,7 @@ public class Usuario implements Serializable {
     @JoinTable
     private List<Role> roles;
     
-    @OneToMany(mappedBy = "usuario")
+    @OneToMany(mappedBy = "usuario", cascade = CascadeType.REMOVE)
     private List<Blog> blogs;
 
     public Usuario() {

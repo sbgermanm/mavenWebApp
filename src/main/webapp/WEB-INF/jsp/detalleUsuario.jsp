@@ -9,12 +9,12 @@
 <%@include file="detalleUsuario-addBlog.jsp" %>
 
 <script type="text/javascript">
-    $(document).ready(function(){
+    $(document).ready(function() {
         $('.nav-tabs a:first').tab('show');
-    } );
+    });
 </script>
 
-    
+
 
 <br /><br />
 <!-- Nav tabs -->
@@ -28,6 +28,9 @@
 <div class="tab-content">
     <c:forEach items="${usuario.blogs}" var="blog">
         <div class="tab-pane" id="blog_${blog.id}">
+            <h1>${blog.name}</h1>
+
+            <a href="<spring:url value="/blog/remove/${blog.id}.html" />" class="btn btn-danger">Borrar blog</a>
             <p>${blog.url}</p>
             <table class="table table-bordered table-hover table-striped">
                 <thead>

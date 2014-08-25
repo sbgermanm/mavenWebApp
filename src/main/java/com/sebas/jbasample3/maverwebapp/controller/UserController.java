@@ -71,11 +71,22 @@ public class UserController {
         return "perfilUsuarioTilesDefinition";
     }
 
-    
     @RequestMapping(value = "/account", method = RequestMethod.POST)
     public String saveBlog(@ModelAttribute("blogBindObject") Blog blog, Principal principal) {
         String name = principal.getName();
         blogService.save(blog, name);
+        return "redirect:/account.html";
+    }
+
+    @RequestMapping("/users/borrar/{id}")
+    public String borrarUsuario(@PathVariable int id) {
+        userService.delete(id);
+        return "redirect:/users.html";
+    }
+
+    @RequestMapping("/blog/remove/{id}")
+    public String borrarBlog(@PathVariable int id) {
+        blogService.delete(id);
         return "redirect:/account.html";
     }
 
