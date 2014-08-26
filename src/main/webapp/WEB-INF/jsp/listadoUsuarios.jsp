@@ -14,7 +14,7 @@
         <c:forEach  items="${listaDeUsuarios}" var="usuario">
             <tr>
                 <td>
-                    <a href=" <spring:url value="/users/${usuario.id}.html" />"> ${usuario.name}</a>
+                    <a href=" <spring:url value="/users/${usuario.id}.html" />"> <c:out value="${usuario.name}" /></a>
                 </td>
                 <td>
                     <a href=" <spring:url value="/users/borrar/${usuario.id}.html" />" class="btn btn-danger lanzarConfirmationDLG">Borrar usuario</a>

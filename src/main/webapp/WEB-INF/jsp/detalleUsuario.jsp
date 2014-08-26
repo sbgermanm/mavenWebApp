@@ -3,7 +3,7 @@
 
 <%@include file="../layout/taglibs.jsp" %>
 
-<h1>${usuario.name}</h1>
+<h1><c:out value="${usuario.name}" /></h1>
 
 <!--boton y formulario añadir blog-->
 <%@include file="detalleUsuario-addBlog.jsp" %>
@@ -27,7 +27,7 @@
 <!-- Nav tabs -->
 <ul class="nav nav-tabs" role="tablist">
     <c:forEach items="${usuario.blogs}" var="blog">
-        <li><a href="#blog_${blog.id}" role="tab" data-toggle="tab">${blog.name}</a></li>
+        <li><a href="#blog_${blog.id}" role="tab" data-toggle="tab"><c:out value="${blog.name}"/></a></li>
         </c:forEach>
 </ul>
 
@@ -35,11 +35,11 @@
 <div class="tab-content">
     <c:forEach items="${usuario.blogs}" var="blog">
         <div class="tab-pane" id="blog_${blog.id}">
-            <h1>${blog.name}</h1>
+            <h1><c:out value="${blog.name}" /></h1>
 
             <a href="<spring:url value="/blog/remove/${blog.id}.html" />" class="btn btn-danger lanzarConfirmationDLG">Borrar blog</a>
             <br/><br/>
-            <p>${blog.url}</p>
+            <p><c:out value="${blog.url}" /></p>
             <table class="table table-bordered table-hover table-striped">
                 <thead>
                     <tr>
@@ -50,8 +50,8 @@
                 <tbody>
                     <c:forEach items="${blog.items}" var="articulo">
                         <tr>
-                            <td>${articulo.title}</td>
-                            <td>${articulo.link}</td>
+                            <td><c:out value="${articulo.title}" /></td>
+                            <td><c:out value="${articulo.link}" /></td>
                         </tr>
                     </c:forEach>
                 </tbody>
