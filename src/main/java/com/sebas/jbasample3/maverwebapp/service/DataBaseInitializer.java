@@ -57,9 +57,9 @@ public class DataBaseInitializer {
         misRoles.add(role1);
         misRoles.add(role2);
         misRoles.add(role3);
-        Usuario usuario = new Usuario("Yo", misRoles);
+        Usuario usuario = new Usuario("sebas", misRoles);
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-        usuario.setPassword(encoder.encode("miclave"));
+        usuario.setPassword(encoder.encode("sebas"));
         usuario.setEnabled(true);
         usuarioRepository.save(usuario);
 

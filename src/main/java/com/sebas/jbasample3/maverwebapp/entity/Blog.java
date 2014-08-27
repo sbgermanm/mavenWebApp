@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package com.sebas.jbasample3.maverwebapp.entity;
 
 import java.io.Serializable;
@@ -16,6 +15,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.Size;
+import org.hibernate.validator.constraints.URL;
 
 /**
  *
@@ -23,18 +24,24 @@ import javax.persistence.OneToMany;
  */
 @Entity
 public class Blog implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
+
+    @Size(min = 3, message = "El nombre debe tener 3 caracteres al menos")
     private String name;
+
+    @Size(min = 3, message = "La URL debe tener 3 caracteres al menos")
+    @URL(message = "URL no valida")
     private String url;
-    
+
     @ManyToOne
     @JoinColumn(name = "usuario_id")
     private Usuario usuario;
-    
-    @OneToMany(mappedBy="blog", cascade = CascadeType.REMOVE)
+
+    @OneToMany(mappedBy = "blog", cascade = CascadeType.REMOVE)
     private List<Item> items;
 
     public Blog() {
@@ -46,8 +53,6 @@ public class Blog implements Serializable {
         this.usuario = usuario;
     }
 
-    
-    
     public String getName() {
         return name;
     }
@@ -79,8 +84,7 @@ public class Blog implements Serializable {
     public void setItems(List<Item> items) {
         this.items = items;
     }
-    
-    
+
     public Integer getId() {
         return id;
     }
@@ -113,5 +117,5 @@ public class Blog implements Serializable {
     public String toString() {
         return "com.sebas.jbasample3.maverwebapp.entity.Blog[ id=" + id + " ]";
     }
-    
+
 }
