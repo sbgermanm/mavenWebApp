@@ -5,7 +5,8 @@
 
 <h1><c:out value="${usuario.name}" /></h1>
 
-
+<!--boton y formulario añadir blog-->
+<%@include file="detalleUsuario-addBlog.jsp" %>
 
 <script type="text/javascript">
     $(document).ready(function() {

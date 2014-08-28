@@ -33,7 +33,7 @@
     </definition>
     <definition name="perfilUsuarioTilesDefinition" extends="common">
         <put-attribute name="title" value="Perfil" />
-        <put-attribute name="body" value="/WEB-INF/jsp/detalleUsuario.jsp" />
+        <put-attribute name="body" value="/WEB-INF/jsp/perfilUsuario.jsp" />
         <put-attribute name="current" value="miCuenta" />
     </definition>
 </tiles-definitions>
