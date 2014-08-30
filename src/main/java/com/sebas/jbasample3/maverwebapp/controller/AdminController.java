@@ -23,7 +23,7 @@ public class AdminController {
     @Autowired
     private UserService userService;
 
-    @RequestMapping()
+    @RequestMapping
     public String getAllUsers(Model modelo) {
         modelo.addAttribute("listaDeUsuarios", userService.findAll());
         return "listadoUsuarioTilesDefinition";
