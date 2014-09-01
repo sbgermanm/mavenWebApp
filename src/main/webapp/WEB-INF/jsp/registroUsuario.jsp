@@ -82,8 +82,13 @@
                     },
                     unhighlight: function (element){
                         $(element).closest(".form-group").removeClass("has-error").addClass("has-success");
+                  },
+                  messages : {
+                      name : {
+                          remote : "El usuario ya existe en el sistema, mendrugo"
+                      }
                     }
                 }
-                );
+            );
     });
 </script>
