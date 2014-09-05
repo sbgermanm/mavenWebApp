@@ -42,15 +42,18 @@
             <table class="table table-bordered table-hover table-striped">
                 <thead>
                     <tr>
-                        <th>Title</th>
-                        <th>Link</th>
+                        <th>Fecha</th>
+                        <th>Articulos</th>
                     </tr>
                 </thead>
                 <tbody>
                     <c:forEach items="${blog.items}" var="articulo">
                         <tr>
-                            <td><c:out value="${articulo.title}" /></td>
-                            <td><c:out value="${articulo.link}" /></td>
+                            <td><c:out value="${articulo.publishDate}" /></td>
+                            <td>
+                                <strong><a href="<c:out value="${articulo.link}" />" target="_blank"><c:out value="${articulo.link}" /></a></strong>
+                                ${articulo.descripcion}
+                            </td>
                         </tr>
                     </c:forEach>
                 </tbody>

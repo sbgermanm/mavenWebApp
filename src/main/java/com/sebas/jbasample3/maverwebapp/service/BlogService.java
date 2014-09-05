@@ -6,9 +6,15 @@
 package com.sebas.jbasample3.maverwebapp.service;
 
 import com.sebas.jbasample3.maverwebapp.entity.Blog;
+import com.sebas.jbasample3.maverwebapp.entity.Item;
 import com.sebas.jbasample3.maverwebapp.entity.Usuario;
+import com.sebas.jbasample3.maverwebapp.exceptions.RssException;
 import com.sebas.jbasample3.maverwebapp.repository.BlogRepository;
+import com.sebas.jbasample3.maverwebapp.repository.ItemRepository;
 import com.sebas.jbasample3.maverwebapp.repository.UsuarioRepository;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.method.P;
@@ -29,10 +35,17 @@ public class BlogService {
     @Autowired
     BlogRepository blogRepository;
 
+    @Autowired
+    ItemRepository itemRepository;
+
+    @Autowired
+    RssService rssService;
+
     public void save(Blog blog, String name) {
         Usuario usuario = usuarioRepository.findByName(name);
         blog.setUsuario(usuario);
         blogRepository.save(blog);
+        saveItems(blog);
     }
 
     @PreAuthorize("#blog.usuario.name == authentication.name or hasRole('ROLE_ADMIN')")
@@ -41,8 +54,23 @@ public class BlogService {
     }
 
     public Blog findOne(int id) {
-        
+
         return blogRepository.findOne(id);
+    }
+
+    private void saveItems(Blog blog) {
+        try {
+            List<Item> articulos = rssService.getItems(blog.getUrl());
+            for (Item articulo : articulos) {
+                Item savedItem = itemRepository.findByBlogAndLink(blog, articulo.getLink());
+                if (null == savedItem) {
+                    articulo.setBlog(blog);
+                    itemRepository.save(articulo);
+                }
+            }
+        } catch (RssException ex) {
+            Logger.getLogger(BlogService.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
 }
