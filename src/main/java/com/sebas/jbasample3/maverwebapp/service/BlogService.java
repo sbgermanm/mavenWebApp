@@ -17,6 +17,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.security.access.method.P;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
@@ -73,4 +74,11 @@ public class BlogService {
         }
     }
 
+    @Scheduled(fixedDelay = 60*60*1000)
+    public void updateBlogs(){
+        List<Blog> allBlogs = blogRepository.findAll();
+        for (Blog blog : allBlogs) {
+            saveItems(blog);
+        }
+    }
 }

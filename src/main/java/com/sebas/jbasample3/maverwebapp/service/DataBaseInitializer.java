@@ -78,11 +78,11 @@ public class DataBaseInitializer {
         Blog blog = new Blog("JavavidBlog", "http://feeds.feedburner.com/javavids?format=xml", usuario);
         blogRepository.save(blog);
 
-        Item item1 = new Item("PrimerArticulo", new Date(), blog, "www.javavids.com");
-        itemRepository.save(item1);
-
-        Item item2 = new Item("SegundoArticulo", new Date(), blog, "www.javavids.com");
-        itemRepository.save(item2);
+//        Item item1 = new Item("PrimerArticulo", new Date(), blog, "www.javavids.com");
+//        itemRepository.save(item1);
+//
+//        Item item2 = new Item("SegundoArticulo", new Date(), blog, "www.javavids.com");
+//        itemRepository.save(item2);
 
     }
 }
