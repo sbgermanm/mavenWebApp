@@ -52,7 +52,7 @@
                         <tr>
                             <td><c:out value="${articulo.publishDate}" /></td>
                             <td>
-                                <strong><a href="<c:out value="${articulo.link}" />" target="_blank"><c:out value="${articulo.link}" /></a></strong>
+                                <strong><a href="<c:out value="${articulo.link}" />" target="_blank"><c:out value="${articulo.title}" /></a></strong>
                                 <br/>
                                 ${articulo.descripcion}
                             </td>
